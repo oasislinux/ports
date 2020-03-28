@@ -1,0 +1,60 @@
+#!/bin/sh
+
+set -ex
+
+if ! sha256sum -c sha256; then
+	curl -LK url
+	sha256sum -c sha256
+fi
+
+rm -rf src
+xz -d -c gcc-9.3.0.tar.xz | pax -r -s ',^[^/]*,src,'
+xz -d -c gmp-6.2.0.tar.xz | pax -r -s ',^[^/]*,src/gmp,'
+gzip -d -c mpc-1.1.0.tar.gz | pax -r -s ',^[^/]*,src/mpc,'
+gzip -d -c mpfr-4.0.2.tar.gz | pax -r -s ',^[^/]*,src/mpfr,'
+
+cd src
+
+for f in "$OLDPWD"/patch/*.patch; do
+	patch -p1 -i "$f"
+done
+
+export LDFLAGS="$LDFLAGS --static"
+export CFLAGS_FOR_TARGET="$CFLAGS"
+export CXXFLAGS_FOR_TARGET="$CXXFLAGS"
+
+./configure \
+	--build=x86_64-linux-musl \
+	--prefix="$PREFIX" \
+	--libdir=/lib \
+	--disable-assembly \
+	--disable-decimal-float \
+	--disable-gnu-indirect-function \
+	--disable-libgomp \
+	--disable-libitm \
+	--disable-libmpx \
+	--disable-libmudflap \
+	--disable-libquadmath \
+	--disable-libsanitizer \
+	--disable-lto \
+	--disable-multilib \
+	--disable-nls \
+	--disable-werror \
+	--enable-default-pie \
+	--enable-languages=c,c++ \
+	--enable-libstdcxx-time=rt \
+	--enable-tls \
+	--with-sysroot=/ \
+	--with-build-sysroot=/ \
+	--with-debug-prefix-map="$PWD=" \
+	--with-native-system-header-dir=/include
+make BOOT_CFLAGS="$CFLAGS" BOOT_LDFLAGS="$LDFLAGS"
+make INFO_DEPS= install
+cd "$DESTDIR/"
+find . '(' -name '*.py' -o -name '*.la' ')' -exec rm {} +
+for bin in cc c++ g++ gcc; do
+	ln -sf x86_64-linux-musl-$bin bin/$bin
+done
+ln -sf x86_64-linux-musl-gcc bin/x86_64-linux-musl-cc
+ln -sf x86_64-linux-musl-g++ bin/x86_64-linux-musl-c++
+gzip -n -9 share/man/man*/*

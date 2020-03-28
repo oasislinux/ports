@@ -1,0 +1,11 @@
+remote-name
+url = "http://www.netgull.com/gcc/releases/gcc-9.3.0/gcc-9.3.0.tar.xz"
+
+remote-name
+url = "https://gmplib.org/download/gmp/gmp-6.2.0.tar.xz"
+
+remote-name
+url = "https://www.mpfr.org/mpfr-current/mpfr-4.0.2.tar.gz"
+
+remote-name
+url = "https://ftp.gnu.org/gnu/mpc/mpc-1.1.0.tar.gz"
