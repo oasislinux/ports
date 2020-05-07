@@ -39,6 +39,7 @@ export CXXFLAGS_FOR_TARGET="$CXXFLAGS"
 	--disable-lto \
 	--disable-multilib \
 	--disable-nls \
+	--disable-plugin \
 	--disable-werror \
 	--enable-default-pie \
 	--enable-languages=c,c++ \
