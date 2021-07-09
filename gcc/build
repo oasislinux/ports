@@ -42,6 +42,7 @@ export CXXFLAGS_FOR_TARGET="$CXXFLAGS"
 	--disable-plugin \
 	--disable-werror \
 	--enable-default-pie \
+	--enable-initfini-array \
 	--enable-languages=c,c++ \
 	--enable-libstdcxx-time=rt \
 	--enable-tls \
