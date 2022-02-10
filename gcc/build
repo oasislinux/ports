@@ -8,7 +8,7 @@ if ! sha256sum -c sha256; then
 fi
 
 rm -rf src
-xz -d -c gcc-11.1.0.tar.xz | pax -r -s ',^[^/]*,src,'
+xz -d -c gcc-11.2.0.tar.xz | pax -r -s ',^[^/]*,src,'
 xz -d -c gmp-6.2.1.tar.xz | pax -r -s ',^[^/]*,src/gmp,'
 gzip -d -c mpc-1.2.1.tar.gz | pax -r -s ',^[^/]*,src/mpc,'
 gzip -d -c mpfr-4.1.0.tar.gz | pax -r -s ',^[^/]*,src/mpfr,'
