@@ -35,7 +35,6 @@ export CXXFLAGS_FOR_TARGET="$CXXFLAGS"
 	--disable-libmpx \
 	--disable-libmudflap \
 	--disable-libquadmath \
-	--disable-libsanitizer \
 	--disable-lto \
 	--disable-multilib \
 	--disable-nls \
