@@ -1,4 +1,4 @@
-From 0da9c839b3162113cbe73fa357476bd935290a34 Mon Sep 17 00:00:00 2001
+From 7bb0f7040dd77fd4f7d9eed166c83bcd533ff435 Mon Sep 17 00:00:00 2001
 From: Michael Forney <mforney@mforney.org>
 Date: Mon, 14 Feb 2022 00:52:11 -0800
 Subject: [PATCH] libsanitizer: intercept pthread_{set,get}name_np
@@ -8,11 +8,11 @@ Subject: [PATCH] libsanitizer: intercept pthread_{set,get}name_np
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/libsanitizer/sanitizer_common/sanitizer_platform_interceptors.h b/libsanitizer/sanitizer_common/sanitizer_platform_interceptors.h
-index 8307b1ec28b..ce04fd06867 100644
+index 8c7c00de6d1..16d203705e9 100644
 --- a/libsanitizer/sanitizer_common/sanitizer_platform_interceptors.h
 +++ b/libsanitizer/sanitizer_common/sanitizer_platform_interceptors.h
-@@ -400,9 +400,9 @@
- #define SANITIZER_INTERCEPT___PTHREAD_MUTEX SI_GLIBC
+@@ -401,9 +401,9 @@
+ 
  #define SANITIZER_INTERCEPT___LIBC_MUTEX SI_NETBSD
  #define SANITIZER_INTERCEPT_PTHREAD_SETNAME_NP \
 -  (SI_FREEBSD || SI_NETBSD || SI_GLIBC || SI_SOLARIS)
@@ -24,5 +24,5 @@ index 8307b1ec28b..ce04fd06867 100644
  #define SANITIZER_INTERCEPT_TLS_GET_ADDR \
    (SI_FREEBSD || SI_NETBSD || SI_LINUX_NOT_ANDROID)
 -- 
-2.42.0
+2.44.0
 
