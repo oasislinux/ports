@@ -60,7 +60,7 @@ ln -sf x86_64-linux-musl-gcc bin/x86_64-linux-musl-cc
 ln -sf x86_64-linux-musl-g++ bin/x86_64-linux-musl-c++
 gzip -n -9 share/man/man*/*
 
-for std in c99 c11; do
+for std in c99 c11 c23; do
 	cat >>bin/$std <<EOF
 #!/bin/sh
 exec cc -std=$std "\$@"
