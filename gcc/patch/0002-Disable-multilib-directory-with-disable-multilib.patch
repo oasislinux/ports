@@ -1,4 +1,4 @@
-From 8d3b6368e1c850ff2c908b37d623f218c0eb7b9f Mon Sep 17 00:00:00 2001
+From 4968d96ee7d8a341bfeb3b396cdea3d361785483 Mon Sep 17 00:00:00 2001
 From: Michael Forney <mforney@mforney.org>
 Date: Thu, 26 Mar 2020 17:08:26 -0700
 Subject: [PATCH] Disable multilib directory with --disable-multilib
@@ -8,10 +8,10 @@ Subject: [PATCH] Disable multilib directory with --disable-multilib
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/gcc/Makefile.in b/gcc/Makefile.in
-index a74761b7ab3..ff5b905a7a1 100644
+index 55b4cd7dbed..187198c829a 100644
 --- a/gcc/Makefile.in
 +++ b/gcc/Makefile.in
-@@ -2301,7 +2301,7 @@ libgcc.mvars: config.status Makefile specs xgcc$(exeext)
+@@ -2479,7 +2479,7 @@ libgcc.mvars: config.status Makefile specs xgcc$(exeext)
  multilib.h: s-mlib; @true
  s-mlib: $(srcdir)/genmultilib Makefile
  	if test @enable_multilib@ = yes \
@@ -21,5 +21,5 @@ index a74761b7ab3..ff5b905a7a1 100644
  	    "$(MULTILIB_OPTIONS)" \
  	    "$(MULTILIB_DIRNAMES)" \
 -- 
-2.44.0
+2.45.2
 

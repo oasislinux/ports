@@ -8,10 +8,10 @@ if ! sha256sum -c sha256; then
 fi
 
 rm -rf src
-xz -d -c gcc-14.2.0.tar.xz | pax -r -s ',^[^/]*,src,'
+xz -d -c gcc-15.1.0.tar.xz | pax -r -s ',^[^/]*,src,'
 xz -d -c gmp-6.3.0.tar.xz | pax -r -s ',^[^/]*,src/gmp,'
 gzip -d -c mpc-1.3.1.tar.gz | pax -r -s ',^[^/]*,src/mpc,'
-gzip -d -c mpfr-4.2.1.tar.gz | pax -r -s ',^[^/]*,src/mpfr,'
+gzip -d -c mpfr-4.2.2.tar.gz | pax -r -s ',^[^/]*,src/mpfr,'
 
 cd src
 
@@ -61,7 +61,7 @@ ln -sf x86_64-linux-musl-g++ bin/x86_64-linux-musl-c++
 gzip -n -9 share/man/man*/*
 
 for std in c99 c17 c23; do
-	cat >>bin/$std <<EOF
+	cat >bin/$std <<EOF
 #!/bin/sh
 exec cc -std=$std "\$@"
 EOF

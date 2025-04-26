@@ -1,4 +1,4 @@
-From 3c2db8885ad9c7a7a1f22c823f26e870b4736abf Mon Sep 17 00:00:00 2001
+From 48ef8ba016d38aedde1ccc79e4008f3b2ab431d0 Mon Sep 17 00:00:00 2001
 From: Michael Forney <mforney@mforney.org>
 Date: Mon, 30 Mar 2020 14:13:07 -0700
 Subject: [PATCH] gcc: Remove pod2man rules
@@ -14,10 +14,10 @@ to rebuild them anyway, ignoring the version in VPATH:
  1 file changed, 12 deletions(-)
 
 diff --git a/gcc/Makefile.in b/gcc/Makefile.in
-index ff5b905a7a1..8ad25dd31a1 100644
+index 187198c829a..d16473feca8 100644
 --- a/gcc/Makefile.in
 +++ b/gcc/Makefile.in
-@@ -3656,18 +3656,6 @@ man: $(MANFILES) lang.man @GENINSRC@ srcman lang.srcman
+@@ -3866,18 +3866,6 @@ man: $(MANFILES) lang.man @GENINSRC@ srcman lang.srcman
  srcman: $(MANFILES)
  	-cp -p $^ $(srcdir)/doc
  
@@ -37,5 +37,5 @@ index ff5b905a7a1..8ad25dd31a1 100644
  	$(STAMP) $@
  	-$(TEXI2POD) -DBUGURL="$(BUGURL_TEXI)" $< > $@
 -- 
-2.44.0
+2.45.2
 
