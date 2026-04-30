@@ -1,4 +1,4 @@
-From 4b2993d5a5ec773ad4d25e0a2bdf5a023d557186 Mon Sep 17 00:00:00 2001
+From 55a0b98a4acbb23f9044b53bbb1dc679152e9f04 Mon Sep 17 00:00:00 2001
 From: Michael Forney <mforney@mforney.org>
 Date: Wed, 25 Mar 2020 16:39:08 -0700
 Subject: [PATCH] Add XGCC_FLAGS_FOR_TARGET to CXX in POSTSTAGE1_CXX_EXPORT
@@ -18,10 +18,10 @@ in POSTSTAGE1_HOST_EXPORTS.
  2 files changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/Makefile.in b/Makefile.in
-index b1ed67d3d4f..9172fb1ddb3 100644
+index 110fa63c10c..f35db982de4 100644
 --- a/Makefile.in
 +++ b/Makefile.in
-@@ -262,8 +262,8 @@ POSTSTAGE1_CXX_EXPORT = \
+@@ -267,8 +267,8 @@ POSTSTAGE1_CXX_EXPORT = \
  	  `if $(LEAN); then echo ' -isystem '; else echo ' -I'; fi`$$r/prev-$(TARGET_SUBDIR)/libstdc++-v3/include \
  	  `if $(LEAN); then echo ' -isystem '; else echo ' -I'; fi`$$s/libstdc++-v3/libsupc++ \
  	  -L$$r/prev-$(TARGET_SUBDIR)/libstdc++-v3/src/.libs \
@@ -33,10 +33,10 @@ index b1ed67d3d4f..9172fb1ddb3 100644
  @endif target-libstdc++-v3-bootstrap
  
 diff --git a/Makefile.tpl b/Makefile.tpl
-index 7dccf91ed8e..23da8a6e747 100644
+index a5ff44e3dbc..b0554cf7b49 100644
 --- a/Makefile.tpl
 +++ b/Makefile.tpl
-@@ -265,8 +265,8 @@ POSTSTAGE1_CXX_EXPORT = \
+@@ -270,8 +270,8 @@ POSTSTAGE1_CXX_EXPORT = \
  	  `if $(LEAN); then echo ' -isystem '; else echo ' -I'; fi`$$r/prev-$(TARGET_SUBDIR)/libstdc++-v3/include \
  	  `if $(LEAN); then echo ' -isystem '; else echo ' -I'; fi`$$s/libstdc++-v3/libsupc++ \
  	  -L$$r/prev-$(TARGET_SUBDIR)/libstdc++-v3/src/.libs \
@@ -48,5 +48,5 @@ index 7dccf91ed8e..23da8a6e747 100644
  @endif target-libstdc++-v3-bootstrap
  
 -- 
-2.45.2
+2.49.0
 
