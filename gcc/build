@@ -7,6 +7,8 @@ if ! sha256sum -c sha256; then
 	sha256sum -c sha256
 fi
 
+arch=$(uname -m)
+
 rm -rf src
 xz -d -c gcc-16.1.0.tar.xz | pax -r -s ',^[^/]*,src,'
 xz -d -c gmp-6.3.0.tar.xz | pax -r -s ',^[^/]*,src/gmp,'
@@ -26,7 +28,7 @@ export CFLAGS_FOR_TARGET="$CFLAGS"
 export CXXFLAGS_FOR_TARGET="$CXXFLAGS"
 
 ../src/configure \
-	--build=x86_64-linux-musl \
+	--build=$arch-linux-musl \
 	--prefix="$PREFIX" \
 	--libdir=/lib \
 	--disable-assembly \
@@ -56,10 +58,10 @@ make INFO_DEPS= install
 cd "$DESTDIR/"
 find . '(' -name '*.py' -o -name '*.la' ')' -exec rm {} +
 for bin in cc c++ g++ gcc; do
-	ln -sf x86_64-linux-musl-$bin bin/$bin
+	ln -sf $arch-linux-musl-$bin bin/$bin
 done
-ln -sf x86_64-linux-musl-gcc bin/x86_64-linux-musl-cc
-ln -sf x86_64-linux-musl-g++ bin/x86_64-linux-musl-c++
+ln -sf $arch-linux-musl-gcc bin/$arch-linux-musl-cc
+ln -sf $arch-linux-musl-g++ bin/$arch-linux-musl-c++
 gzip -n -9 share/man/man*/*
 
 for std in c99 c17 c23; do
