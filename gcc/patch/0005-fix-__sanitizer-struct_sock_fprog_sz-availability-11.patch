@@ -1,4 +1,4 @@
-From 44d5fb93ef00a881305a326466de98dea2193b47 Mon Sep 17 00:00:00 2001
+From 3a4c0ec064872177a4463db518be19a80dafe8ae Mon Sep 17 00:00:00 2001
 From: David CARLIER <devnexen@gmail.com>
 Date: Mon, 9 Dec 2024 06:36:08 +0000
 Subject: [PATCH] fix __sanitizer::struct_sock_fprog_sz availability (#118762)
@@ -22,7 +22,7 @@ index f2a9348217c..489b4e818db 100644
               arg2 == SECCOMP_MODE_FILTER) {
      COMMON_INTERCEPTOR_WRITE_RANGE(ctx, (u64 *)(arg3), struct_sock_fprog_sz);
 diff --git a/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.h b/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.h
-index c07f7cd0b0d..20562229aac 100644
+index cfac4903b76..679bd5a6662 100644
 --- a/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.h
 +++ b/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.h
 @@ -513,6 +513,7 @@ struct __sanitizer_dirent64 {
@@ -33,7 +33,7 @@ index c07f7cd0b0d..20562229aac 100644
  #endif
  
  #if defined(__x86_64__) && !defined(_LP64)
-@@ -1066,7 +1067,6 @@ extern unsigned struct_serial_struct_sz;
+@@ -1065,7 +1066,6 @@ extern unsigned struct_serial_struct_sz;
  extern unsigned struct_sockaddr_ax25_sz;
  extern unsigned struct_unimapdesc_sz;
  extern unsigned struct_unimapinit_sz;
