@@ -15,7 +15,7 @@ xz -d -c gmp-6.3.0.tar.xz | pax -r -s ',^[^/]*,src/gmp,'
 xz -d -c mpc-1.4.1.tar.xz | pax -r -s ',^[^/]*,src/mpc,'
 gzip -d -c mpfr-4.2.2.tar.gz | pax -r -s ',^[^/]*,src/mpfr,'
 
-for f in "$OLDPWD"/patch/*.patch; do
+for f in "$PWD"/patch/*.patch; do
 	patch -d src -p1 -i "$f"
 done
 
