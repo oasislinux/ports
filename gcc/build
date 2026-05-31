@@ -3,7 +3,7 @@
 set -ex
 
 if ! sha256sum -c sha256; then
-	curl -LK url
+	curl -fLK url
 	sha256sum -c sha256
 fi
 
